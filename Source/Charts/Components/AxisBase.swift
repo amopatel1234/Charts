@@ -26,6 +26,7 @@ open class AxisBase: ComponentBase
     
     open var labelFont = NSUIFont.systemFont(ofSize: 10.0)
     open var labelTextColor = NSUIColor.black
+    open var normalizeLabelInterval = true
     
     open var axisLineColor = NSUIColor.gray
     open var axisLineWidth = CGFloat(0.5)
@@ -38,6 +39,7 @@ open class AxisBase: ComponentBase
     open var gridLineDashLengths: [CGFloat]!
     open var gridLineCap = CGLineCap.butt
     
+    open var drawOnlyMinorGridLines = false
     open var drawGridLinesEnabled = true
     open var drawAxisLineEnabled = true
     

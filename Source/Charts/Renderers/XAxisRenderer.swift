@@ -318,7 +318,10 @@ open class XAxisRenderer: AxisRendererBase
         
         let entries = xAxis.entries
         
-        for i in stride(from: 0, to: entries.count, by: 1)
+        let fromStride = xAxis.drawOnlyMinorGridLines ? 1 : 0
+        let toStride = xAxis.drawOnlyMinorGridLines ? entries.count - 1 : entries.count
+        
+        for i in stride(from: fromStride, to: toStride, by: 1)
         {
             position.x = CGFloat(entries[i])
             position.y = position.x

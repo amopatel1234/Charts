@@ -121,13 +121,15 @@ open class AxisRendererBase: Renderer
             interval = interval < axis.granularity ? axis.granularity : interval
         }
         
-        // Normalize interval
-        let intervalMagnitude = ChartUtils.roundToNextSignificant(number: pow(10.0, Double(Int(log10(interval)))))
-        let intervalSigDigit = Int(interval / intervalMagnitude)
-        if intervalSigDigit > 5
-        {
-            // Use one order of magnitude higher, to avoid intervals like 0.9 or 90
-            interval = floor(10.0 * Double(intervalMagnitude))
+        if axis.normalizeLabelInterval {
+            // Normalize interval
+            let intervalMagnitude = ChartUtils.roundToNextSignificant(number: pow(10.0, Double(Int(log10(interval)))))
+            let intervalSigDigit = Int(interval / intervalMagnitude)
+            if intervalSigDigit > 5
+            {
+                // Use one order of magnitude higher, to avoid intervals like 0.9 or 90
+                interval = floor(10.0 * Double(intervalMagnitude))
+            }
         }
         
         var n = axis.centerAxisLabelsEnabled ? 1 : 0
